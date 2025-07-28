@@ -11,7 +11,7 @@
 <script setup>
 
 import { onMounted, ref } from 'vue';
-import axios from 'axios';
+import { getAllHero } from '../api/hero';
 
 const legends = ref([]);
 const loading = ref(false);
@@ -20,13 +20,12 @@ const loading = ref(false);
 const fetchLegends = async () => {
     try {
         loading.value = true;
-        const response = await axios.get("http://127.0.0.1:25357/heroes/query");
+        const response = await getAllHero()
         console.log(response.data)
         legends.value = response.data
-
     }
     catch (err) {
-
+        console.error(err)
     }
 }
 

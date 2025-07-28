@@ -6,7 +6,9 @@ const navTag = ref([
     { tag: "主页", path: "/" },
     { tag: "传奇", path: "/legends" },
     { tag: "武器", path: "/weapon" },
-    { tag: "地图", path: "/map" }
+    { tag: "地图", path: "/map" },
+    { tag: "登录", path: "/login" },
+    { tag: "注册", path: "/sign_up" },
 ]);
 
 </script>
