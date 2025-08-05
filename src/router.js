@@ -10,7 +10,12 @@ const routes = [
     {
         path: '/legends',
         name: 'Legends',
-        component: () => import('./pages/Legends.vue')
+        component: () => import('./pages/Legends.vue'),
+        meta: { requiresAuth: true },
+        beforeEnter: (to, from, next) => {
+            console.log("进入传奇页面的检查")
+            next()
+        }
     },
     {
         path: '/weapon',
@@ -20,7 +25,7 @@ const routes = [
     {
         path: '/map',
         name: 'Map',
-        component: () => import('./pages/Map.vue')
+        component: () => import('./pages/Map.vue'),
     },
     {
         path: "/login",
@@ -34,4 +39,14 @@ const router = createRouter({
     routes
 })
 
+// 全局前置守卫
+router.beforeEach((to, from, next) => {
+    const isLoggedin = localStorage.getItem("userToken")
+
+    if (to.meta.requiresAuth && !isLoggedin) {
+        next("/login")
+    } else {
+        next()
+    }
+})
 export default router
