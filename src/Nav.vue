@@ -27,7 +27,7 @@ const getLoginUserTag = (tag, path) => {
 </script>
 
 <template>
-    <div class="flex px-10 justify-between items-center w-full h-14">
+    <div class="flex px-10 justify-between items-center w-full h-14  bg-black text-cyan-300 border-b border-cyan-900">
 
         <!-- 左 -->
         <div class="flex justify-center items-center space-x-2">
@@ -40,7 +40,7 @@ const getLoginUserTag = (tag, path) => {
         <!-- transition-colors: 实现颜色过渡动画 -->
         <div class="space-x-6">
             <RouterLink v-for="(item, index) in navs" :key="index" :to="item.path"
-                class="hover:text-red-400 font-bold rounded-3xl px-4 py-1 duration-300 transition-colors"
+                class="hover:text-pink-400 hover:bg-white/5"
                 active-class="!text-red-500 bg-red-100" 
                 exact-active-class="!text-red-500 bg-red-100">
                 {{ getLoginUserTag(item.tag, item.path) }}

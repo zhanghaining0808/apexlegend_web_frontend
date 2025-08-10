@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h1>欢迎来到apex legend的主页</h1>
+        <HeroCard />
     </div>
 
 </template>
 <script setup>
+import HeroCard from '../components/HeroCard.vue';
 </script>
