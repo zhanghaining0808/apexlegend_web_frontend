@@ -9,7 +9,12 @@ import api from "./base"
 // return api.get("/heroes/query")
 // }
 
-const getAllHero = () => api.get("/heroes/query");
+const getAllHero = () => api.get("/heroes/query", {
+    headers: {
+        'X-Auth-Token': localStorage.getItem("userToken"),
+    }
+})
+
 // 后续可以在这里添加更多英雄相关操作函数
 // 比如：getHeroByld(根据ID查英雄)，addHero(新增英雄)等
 

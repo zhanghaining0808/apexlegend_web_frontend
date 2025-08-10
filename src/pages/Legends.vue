@@ -35,7 +35,8 @@ const fetchLegends = async () => {
         loading.value = true;//开始加载
         const response = await getAllHero()//调用API获取数据
         console.log(response.data)//打印获取的数据
-        legends.value = response.data//将数据存入legends
+        const resBody = response.data
+        legends.value = resBody.data//将数据存入legends
     }
     catch (err) {
         console.error(err)//捕获并打印错误

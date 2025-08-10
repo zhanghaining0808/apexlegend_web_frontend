@@ -40,7 +40,9 @@ const getLoginUserTag = (tag, path) => {
         <!-- transition-colors: 实现颜色过渡动画 -->
         <div class="space-x-6">
             <RouterLink v-for="(item, index) in navs" :key="index" :to="item.path"
-                class="hover:text-red-400 font-bold rounded-3xl px-4 py-1 duration-300 transition-colors">
+                class="hover:text-red-400 font-bold rounded-3xl px-4 py-1 duration-300 transition-colors"
+                active-class="!text-red-500 bg-red-100" 
+                exact-active-class="!text-red-500 bg-red-100">
                 {{ getLoginUserTag(item.tag, item.path) }}
             </RouterLink>
             <button v-if="authStore.isLogin" @click="authStore.logout"

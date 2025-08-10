@@ -2,6 +2,7 @@
 import { defineStore } from 'pinia';
 import { ref, onMounted } from 'vue'; // 
 import { login, signUp, tokenLogin } from '../api/user'; //
+import { renderToWebStream } from 'vue/server-renderer';
 
 // 使用defineStore定义一个名为"auth"的(store),该store使用组合式API编写
 export const useAuthStore = defineStore("auth", () => {
@@ -31,9 +32,10 @@ export const useAuthStore = defineStore("auth", () => {
             try {
                 // res:respond 回应
                 const res = await tokenLogin(token.value)
+                const resBody = res.data
                 user.value = {
-                    "name": res.data.user.name,
-                    "phone": res.data.user.phone
+                    "name": resBody.data.user.name,
+                    "phone": resBody.data.user.phone
                 }
                 isLogin.value = true;
             } catch (error) {
@@ -51,11 +53,12 @@ export const useAuthStore = defineStore("auth", () => {
         }
         try {
             const res = await signUp(username, password, phone);
-            token.value = res.data.access_token;
+            const resBody = res.data
+            token.value = resBody.data.access_token;
             user.value = {
-                "name": res.data.user.name,
+                "name": resBody.data.user.name,
                 // "passwd": res.data.user.passwd,
-                "phone": res.data.user.phone
+                "phone": resBody.data.user.phone
             }
             localStorage.setItem('userToken', token.value);
             isLogin.value = true;
@@ -70,11 +73,12 @@ export const useAuthStore = defineStore("auth", () => {
     const loginUser = async (username, password) => {
         try {
             const res = await login(username, password); // 调用API登录
-            token.value = res.data.access_token;
+            const resBody = res.data
+            token.value = resBody.data.access_token;
             isLogin.value = true;
             user.value = {
-                "name": res.data.user.name,
-                "phone": res.data.user.phone
+                "name": resBody.data.user.name,
+                "phone": resBody.data.user.phone
             }
             localStorage.setItem('userToken', token.value);
             return true;
