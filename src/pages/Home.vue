@@ -1,9 +1,9 @@
-<template>
-    <div class="px-20 pt-12">
-        <HeroCard />
-    </div>
-
-</template>
 <script setup>
-import HeroCard from '../components/HeroCard.vue';
+import homebg from '/homebg.jpg'
 </script>
+
+<template>
+    <div>
+        <img :src="homebg" class="h-180 px-20 pt-12" alt="">
+    </div>
+</template>

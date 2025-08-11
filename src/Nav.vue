@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import apexlogo from "/apexlogo.jpg"
 import { useAuthStore } from './stores/authStore';
 
 const authStore = useAuthStore()
@@ -27,21 +26,21 @@ const getLoginUserTag = (tag, path) => {
 </script>
 
 <template>
-    <div
-        class="flex px-4 justify-between items-center w-full h-14 bg-gradient-to-b from-black/70 to-transparent text-white">
+    <div class="flex px-4 justify-between items-center w-full h-14 bg-[#181818] to-transparent text-white">
 
         <!-- 左 -->
         <div class="flex justify-center items-center space-x-2">
-            <!-- <img :src="apexlogo" alt="APEX logo" class="h-14"> -->
-            <div class="text-2xl">APEX</div>
+
+
+            <div class="text-5xl">APEX</div>
         </div>
 
         <!-- 右 -->
         <!-- px:水平内边距 py：垂直内边距 -->
         <!-- transition-colors: 实现颜色过渡动画 -->
-        <div class="space-x-6">
+        <div class="space-x-6 text-2xl">
             <RouterLink v-for="(item, index) in navs" :key="index" :to="item.path"
-                class="hover:text-gray-400 hover:border-b-[1px]" active-class="text-gray-300"
+                class="hover:text-gray-500 hover:border-b-[1px]" active-class="text-red-900"
                 exact-active-class="text-gray-400 border-b-[1px]">
                 {{ getLoginUserTag(item.tag, item.path) }}
             </RouterLink>

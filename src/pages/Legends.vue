@@ -1,4 +1,7 @@
 <template>
+    <div class="px-20 pt-12">
+        <HeroCard />
+    </div>
     <!-- 模板部分：定义页面的HTML结构 -->
     <div>
         <!-- 大标题 -->
@@ -17,6 +20,7 @@
 <!-- onMounted:生命周期钩子,组件加载完成后执行 -->
 <!-- async/await:的处理异步操作,使代码更易读 -->
 <script setup>
+import HeroCard from '../components/HeroCard.vue';
 // 脚本部分：定义组件逻辑
 
 // 从Vue中导入需要的函数 
