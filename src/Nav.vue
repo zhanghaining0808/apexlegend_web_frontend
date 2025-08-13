@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useAuthStore } from './stores/authStore';
 import logo from "/apexlogo.jpg"
 const authStore = useAuthStore()
