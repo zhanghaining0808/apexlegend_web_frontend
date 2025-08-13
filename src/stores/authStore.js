@@ -2,7 +2,6 @@
 import { defineStore } from 'pinia';
 import { ref, onMounted } from 'vue'; // 
 import { login, signUp, tokenLogin } from '../api/user'; //
-import { renderToWebStream } from 'vue/server-renderer';
 
 // 使用defineStore定义一个名为"auth"的(store),该store使用组合式API编写
 export const useAuthStore = defineStore("auth", () => {

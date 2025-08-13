@@ -1,18 +1,6 @@
 <template>
-    <div class="px-20 pt-12">
-        <HeroCard />
-    </div>
-    <!-- 模板部分：定义页面的HTML结构 -->
-    <div>
-        <!-- 大标题 -->
-        <h1>这是传奇的页面</h1>
-        <!-- 显示legends数组的原始内容(调试用) -->
-        <div>{{ legends }}</div>
-        <!-- 循环渲染legends数组中的每个英雄 -->
-        <li v-for="legend of legends">
-            <!-- 显示一英雄名字(灰色大字体)和年龄 -->
-            <span class="text-2xl text-gray-400">{{ legend.name }}</span> - {{ legend.age }}
-        </li>
+    <div class="px-20 pt-12 flex-wrap flex">
+        <HeroCard v-for="legend in legends" :name="legend.name" :describe="legend.describe" />
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useAuthStore } from './stores/authStore';
-
+import logo from "/apexlogo.jpg"
 const authStore = useAuthStore()
 
 const navs = ref([
@@ -30,10 +30,10 @@ const getLoginUserTag = (tag, path) => {
 
         <!-- 左 -->
         <div class="flex justify-center items-center space-x-2">
-
-
+            <img :src="logo" class="w-14" alt="">
             <div class="text-5xl">APEX</div>
         </div>
+
 
         <!-- 右 -->
         <!-- px:水平内边距 py：垂直内边距 -->
@@ -44,8 +44,11 @@ const getLoginUserTag = (tag, path) => {
                 exact-active-class="text-gray-400 border-b-[1px]">
                 {{ getLoginUserTag(item.tag, item.path) }}
             </RouterLink>
+            <!-- hover:鼠标悬停 border-b:默认会添加1px宽的边框 颜色跟随当前文本颜色 -->
             <button v-if="authStore.isLogin" @click="authStore.logout"
-                class="cursor-context-menu font-bold rounded-3xl px-4 py-1 duration-300 transition-colors">退出登录</button>
+                class="cursor-context-menu font-bold rounded-3xl px-4 duration-300 transition-colors">退出登录</button>
+            <!-- cursor-context-menu 设置鼠标指针为上下文菜单样式 -->
+            <!-- font-bold 加粗字体 -->
         </div>
     </div>
 
