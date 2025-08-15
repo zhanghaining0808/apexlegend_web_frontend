@@ -15,12 +15,12 @@
         </div>
         <!-- 提交按钮,根据模式显示不同文字 -->
         <button type="submit">{{ !isSignup ? "登录" : "注册" }}</button>
+        <!-- 显示当前token状态 -->
+        <p>Token is: {{ authStore.token }}</p>
+        <!-- 显示登录状态 -->
+        <p>Is login: {{ authStore.isLogin }}</p>
     </form>
 
-    <!-- 显示当前token状态 -->
-    <p>Token is: {{ authStore.token }}</p>
-    <!-- 显示登录状态 -->
-    <p>Is login: {{ authStore.isLogin }}</p>
 </template>
 
 <script setup>

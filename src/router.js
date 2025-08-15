@@ -1,6 +1,10 @@
 // router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { useAuthStore } from './stores/authStore.js';
+
+
+
 const routes = [
     {
         path: '/',
@@ -13,19 +17,45 @@ const routes = [
         component: () => import('./pages/Legends.vue'),
         meta: { requiresAuth: true },
         beforeEnter: (to, from, next) => {
+            const authStore = useAuthStore();
+            if (authStore.isLogin) {
+                next()
+            } else {
+                next("/login")
+            }
+
             console.log("进入传奇页面的检查")
-            next()
         }
     },
     {
         path: '/weapon',
         name: 'Weapon',
-        component: () => import('./pages/Weapon.vue')
+        component: () => import('./pages/Weapon.vue'),
+        meta: { requiresAuth: true },
+        beforeEnter: (to, from, next) => {
+            const authStore = useAuthStore();
+            if (authStore.isLogin) {
+                next()
+            } else {
+                next("/login")
+            }
+            console.log("进入武器页面的检查")
+        }
     },
     {
         path: '/map',
         name: 'Map',
         component: () => import('./pages/Map.vue'),
+        meta: { requiresAuth: true },
+        beforeEnter: (_to, from, next) => {
+            const authStore = useAuthStore();
+            if (authStore.isLogin) {
+                next()
+            } else {
+                next("/login")
+            }
+            console.log("进入地图页面的检查")
+        }
     },
     {
         path: "/login",
@@ -40,7 +70,7 @@ const router = createRouter({
 })
 
 // 全局前置守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
     const isLoggedin = localStorage.getItem("userToken")
 
     if (to.meta.requiresAuth && !isLoggedin) {
